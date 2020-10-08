@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/johnbumgarner/facial_detection_prediction-/blob/master/graphic/facial_recognition.png">
+  <img src="https://github.com/johnbumgarner/facial_prediction/blob/main/graphic/facial_recognition.png">
 </p>
 
 # Overview Facial Prediction
