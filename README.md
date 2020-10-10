@@ -38,7 +38,6 @@ OpenCV is being used today for a wide range of applications which include:
 - Signature pattern detection on documents
 </p>
 
-
 #### Haar Cascade Classifier - Facial Detection
 
 <p align="justify">
@@ -72,3 +71,40 @@ The image of <i>Natalie Portman</i> below has a <i>bounding box</i> drawn around
 </p>
 
 </p>
+
+
+#### OpenCV Data Gathering
+
+
+
+
+#### OpenCV Recognizer Training
+</p>
+
+In the previous phase facial data was extracted from a dataset of images using the frontal face Haar Cascade classifier.  In this phase the data will be run through the <i>OpenCV Recognizer.</i>. The LBPH face recognition algorithm was used in this training phase.  The Local Binary Pattern (LBP) is a simple and efficient texture operator which labels the pixels of an image by thresholding the neighborhood of each pixel and considers the result as a binary number.
+
+<i>Parameters: the LBPH uses 4 parameters:</i>
+
+1. Radius: the radius used for building the Circular Local Binary Pattern. The greater the radius, the smoother the image but more spatial information you can get.
+
+2. Neighbors: the number of sample points to build a Circular Local Binary Pattern from. An appropriate value is to use 8 sample points. Keep in mind: the more sample points you include, the higher the computational cost. Max value is 8.
+
+3. Grid X: the number of cells in the horizontal direction, 8 is a common value used in publications. The more cells, the finer the grid, the higher the dimensionality of the resulting feature vector. Max value is 8
+
+4. Grid Y: The number of cells in the vertical direction, 8 is a common value used in publications. The more cells, the finer the grid, the higher the dimensionality of the resulting feature vector. Max value is 8.
+
+The initial dataset created in the Data Gathering phase contained facial boundary box coordinates, labels and identification numbers. A <i>pickle</i> file named   <i>face_labels.pickle</i> will be used to contain the associations between the dataset images and their labels. Pickling is a process where a Python object hierarchy is converted into a byte stream and dumps it into a file by using dump function. This character stream contains all the information necessary to reconstruct the object in another python script.   
+
+The facial boundary box coordinates for each image will be processed using the <i>OpenCV LBPHFaceRecognizer.</i>. The output will be written to a YML file.  This file is primarily associated with Javascript by YAML.  YAML stand for "YAML Ain't Markup Language." YAML uses a text file and organizes it into a format which is Human-readable. 
+
+```python
+recognizer = cv2.face.LBPHFaceRecognizer_create(radius=1, neighbors=4, grid_x=4, grid_y=4)
+
+with open('face_labels.pickle', 'wb') as pickle_file:
+    pickle.dump(image_names, pickle_file)
+ 
+recognizer.train(x_train, np.array(y_labels))
+recognizer.write('face_train_data.yml')
+```
+
+<p align="justify">
