@@ -136,4 +136,8 @@ for (x_coordinate, y_coordinate, width, height) in faces:
    else:
      <DO SOMETHING>
 ```
+<p align="left">
+  <img src="https://github.com/johnbumgarner/facial_prediction/blob/main/graphic/absolute_match.jpg">
+</p>
+
 </p>
