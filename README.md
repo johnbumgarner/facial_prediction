@@ -137,7 +137,7 @@ for (x_coordinate, y_coordinate, width, height) in faces:
      <DO SOMETHING>
 ```
 <p align="left">
-  <img src="https://github.com/johnbumgarner/facial_prediction/blob/main/graphic/absolute_match.jpg">
+  <img src="https://github.com/johnbumgarner/facial_prediction/blob/main/graphic/absolute_match.jpg" width="200" height="200">
 </p>
 
 </p>
