@@ -79,7 +79,7 @@ The image of <i>Natalie Portman</i> below has a <i>bounding box</i> drawn around
 
 
 #### OpenCV Recognizer Training
-</p>
+<p align="justify">
 
 In the previous phase facial data was extracted from a dataset of images using the frontal face Haar Cascade classifier.  In this phase the data will be run through the <i>OpenCV Recognizer.</i>. The LBPH face recognition algorithm was used in this training phase.  The Local Binary Pattern (LBP) is a simple and efficient texture operator which labels the pixels of an image by thresholding the neighborhood of each pixel and considers the result as a binary number.
 
@@ -95,7 +95,7 @@ In the previous phase facial data was extracted from a dataset of images using t
 
 The initial dataset created in the Data Gathering phase contained facial boundary box coordinates, labels and identification numbers. A <i>pickle</i> file named   <i>face_labels.pickle</i> will be used to contain the associations between the dataset images and their labels. Pickling is a process where a Python object hierarchy is converted into a byte stream and dumps it into a file by using dump function. This character stream contains all the information necessary to reconstruct the object in another python script.   
 
-The facial boundary box coordinates for each image will be processed using the <i>OpenCV LBPHFaceRecognizer.</i>. The output will be written to a YML file.  This file is primarily associated with Javascript by YAML.  YAML stand for "YAML Ain't Markup Language." YAML uses a text file and organizes it into a format which is Human-readable. 
+The facial boundary box coordinates for each image will be processed using the <i>OpenCV LBPHFaceRecognizer</i>. The output will be written to a YML file.  This file is primarily associated with Javascript by YAML.  YAML stand for "YAML Ain't Markup Language." YAML uses a text file and organizes it into a format which is Human-readable. 
 
 ```python
 recognizer = cv2.face.LBPHFaceRecognizer_create(radius=1, neighbors=4, grid_x=4, grid_y=4)
@@ -106,5 +106,34 @@ with open('face_labels.pickle', 'wb') as pickle_file:
 recognizer.train(x_train, np.array(y_labels))
 recognizer.write('face_train_data.yml')
 ```
+</p>
 
+#### OpenCV Recognizer Prediction
 <p align="justify">
+  
+In this phase the data elements within the pickle and YAML files created in the training phase will be used in conjunction with the Haar Cascade classifier <i>haarcascade_frontalface_default.xml</i>.  The classifier is used to obtain the boundary box coordinates from the photograph of the unknown person that we are looking for within the image dataset. The <i>OpenCV</i> function <i>face_FaceRecognizer.predict()</i> is used to compute a <i>confidence score,</i> which indicates the match potential between the target image and one within the dataset. A perfect match will have a <i>confidence score</i> of zero.  <i>Confidence scores</i> can assigned to various thresholds levels, which will allow for the possibility of close matches and no related matches within the dataset.   
+
+```python
+recognizer.read(training_data)
+
+with open(image_labels, 'rb') as pickle_file:
+   pickle_labels = pickle.load(pickle_file)
+   labels = {value: key for key, value in pickle_labels.items()}
+   
+image = cv2.imread(image_name, cv2.IMREAD_UNCHANGED)
+image = cv2.resize(image, (image_height, image_width), interpolation=cv2.INTER_AREA)
+grayscale_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+faces = face_cascade.detectMultiScale(grayscale_image, scaleFactor=1.3, minNeighbors=8, flags=cv2.CASCADE_SCALE_IMAGE)
+
+for (x_coordinate, y_coordinate, width, height) in faces:
+   cv2.rectangle(image, (x_coordinate, y_coordinate), (x_coordinate + width, y_coordinate + height), (255, 0, 255), 2)
+   roi_gray = grayscale_image[y_coordinate:y_coordinate + height, x_coordinate:x_coordinate + width]
+   identified_person, confidence_score = recognizer.predict(roi_gray)
+   if confidence_score == 0:
+     <DO SOMETHING>
+   elif 0 < confidence_score <= 10:
+     <DO SOMETHING>
+   else:
+     <DO SOMETHING>
+```
+</p>
