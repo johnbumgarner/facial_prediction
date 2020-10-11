@@ -111,7 +111,7 @@ recognizer.write('face_train_data.yml')
 #### OpenCV Recognizer Prediction
 <p align="justify">
   
-In this phase the data elements within the pickle and YAML files created in the training phase will be used in conjunction with the Haar Cascade classifier <i>haarcascade_frontalface_default.xml</i>.  The classifier is used to obtain the boundary box coordinates from the photograph of the unknown person that we are looking for within the image dataset. The <i>OpenCV</i> function <i>face_FaceRecognizer.predict()</i> is used to compute a <i>confidence score,</i> which indicates the match potential between the target image and one within the dataset. A perfect match will have a <i>confidence score</i> of zero.  <i>Confidence scores</i> can assigned to various thresholds levels, which will allow for the possibility of close matches and no related matches within the dataset.   
+In this phase the data elements within the pickle and YAML files created in the training phase will be used in conjunction with the Haar Cascade classifier <i>haarcascade_frontalface_default.xml</i>.  The classifier is used to obtain the boundary box coordinates from the photograph of the unknown person that we are looking for within the image dataset. The <i>OpenCV</i> function <i>face_FaceRecognizer.predict()</i> is used to compute a <i>confidence score,</i> which indicates the match potential between the target image and one within the dataset. A perfect match will have a <i>confidence score</i> of zero. <i>Confidence scores</i> can assigned to various thresholds levels, which will allow for the possibility of close matches and no related matches within the dataset.   
 
 ```python
 recognizer.read(training_data)
@@ -136,12 +136,16 @@ for (x_coordinate, y_coordinate, width, height) in faces:
    else:
      <DO SOMETHING>
 ```
+
+<i>face_FaceRecognizer.predict()</i> was able to accurately predicated that the target image of Natalie Portman matched a face within the dataset that contained 73 photos of well-known female actresses.
+
 <p align="left">
   <img src="https://github.com/johnbumgarner/facial_prediction/blob/main/graphic/absolute_match.jpg" width="225" height="225">
 </p>
 
+The <i>FaceRecognizer</i> algorithm was also able to predicated that the mirrior image of Natalie Portman also matched a face within the dataset. The <i>confidence score</i> for this match was 3 precent, which was well within the threshold level for probable matches.
+
 <p align="left">
   <img src="https://github.com/johnbumgarner/facial_prediction/blob/main/graphic/natalie_portman_mirror_confidence_score.jpg" width="225" height="225">
 </p>
-
 </p>
