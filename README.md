@@ -149,3 +149,5 @@ The <i>FaceRecognizer</i> algorithm was also able to predicated that the mirrior
   <img src="https://github.com/johnbumgarner/facial_prediction/blob/main/graphic/natalie_portman_mirror_confidence_score.jpg" width="225" height="225">
 </p>
 </p>
+
+### OpenCV Recognizer Prediction Issues:
