@@ -10,11 +10,11 @@ The repository [Facial Features Detection](https://github.com/johnbumgarner/faci
 
 </p>
 
-## Primary objective of this repository (RE-WRITE)
+## Primary objective of this repository
 
 <p align="justify">
   
-This repository is going to examine the <i>OpenCV</i> function <i>face_FaceRecognizer.predict(), which is used to predict the probability that a target photo matches another image within a dataset. This target image is of the well-known female actress <i>Natalie Portman</i> and the dataset contains 73 images of other actresses.
+This repository is going to examine the <i>OpenCV</i> function <i>face_FaceRecognizer.predict()</i>, which is used to predict the probability that a target photo matches another image within a dataset. This target image is of the well-known female actress <i>Natalie Portman</i> and the dataset contains 73 images of other actresses.
   
 Another objective of this repository is to determine the capabilities and limitations of the Python libraries used to perform the prediction test.
 </p>
@@ -74,8 +74,7 @@ The image of <i>Natalie Portman</i> below has a <i>bounding box</i> drawn around
 
 #### OpenCV Data Gathering
 
-
-
+In this phase all the images within the dataset will have their facial parameters calculated using the frontalface Haar Cascade classifier. These data points along with their corresponding identification numbers will be pass to the <i>OpenCV Recognizer</i> for addtional processing. 
 
 #### OpenCV Recognizer Training
 <p align="justify">
