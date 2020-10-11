@@ -13,9 +13,10 @@ The repository [Facial Features Detection](https://github.com/johnbumgarner/faci
 ## Primary objective of this repository (RE-WRITE)
 
 <p align="justify">
-This repository is going to examine various methods and algorithms that can be used to identify specific facial characteristics, such as the eye and mouth areas of a human face. The 3 images used in these tests are of the well-known female actress <i>Natalie Portman</i>.
   
-Another objective of this repository is to determine the capabilities and limitations of the Python libraries used to perform these facial characteristics tests.
+This repository is going to examine the <i>OpenCV</i> function <i>face_FaceRecognizer.predict(), which is used to predict the probability that a target photo matches another image within a dataset. This target image is of the well-known female actress <i>Natalie Portman</i> and the dataset contains 73 images of other actresses.
+  
+Another objective of this repository is to determine the capabilities and limitations of the Python libraries used to perform the prediction test.
 </p>
 
 ## Facial Detection and Facial Prediction
@@ -69,9 +70,7 @@ The image of <i>Natalie Portman</i> below has a <i>bounding box</i> drawn around
 <p align="left">
   <img src="https://github.com/johnbumgarner/facial_detection_prediction-/blob/master/graphic/facial_front_detection.jpg">
 </p>
-
 </p>
-
 
 #### OpenCV Data Gathering
 
@@ -151,3 +150,5 @@ The <i>FaceRecognizer</i> algorithm was also able to predicated that the mirrior
 </p>
 
 ### OpenCV Recognizer Prediction Issues:
+
+
