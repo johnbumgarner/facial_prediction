@@ -1,5 +1,3 @@
-# under construction
-
 <p align="center">
   <img src="https://github.com/johnbumgarner/facial_prediction/blob/main/graphic/facial_recognition.png">
 </p>
@@ -152,4 +150,5 @@ The <i>FaceRecognizer</i> algorithm was also able to predicated that the mirrior
 
 ### OpenCV Recognizer Prediction Issues:
 
-
+The dataset used in the prediction test only contained 73 images of well-known actresses. Using this dataset caused some issues when a different photo of 
+<i>Natalie Portman</i> was introduced as the target image.  This new target image did not find a probable match within the limited dataset. To compensate for this issue, addtional photos of <i>Natalie Portman</i> were added to a modified dataset to provide more facial possibilities to query. 
