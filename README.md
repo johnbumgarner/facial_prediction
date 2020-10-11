@@ -130,11 +130,11 @@ for (x_coordinate, y_coordinate, width, height) in faces:
    roi_gray = grayscale_image[y_coordinate:y_coordinate + height, x_coordinate:x_coordinate + width]
    identified_person, confidence_score = recognizer.predict(roi_gray)
    if confidence_score == 0:
-     <DO SOMETHING>
+      <DO SOMETHING>
    elif 0 < confidence_score <= 10:
-     <DO SOMETHING>
+      <DO SOMETHING>
    else:
-     <DO SOMETHING>
+      <DO SOMETHING>
 ```
 
 <i>face_FaceRecognizer.predict()</i> was able to accurately predicated that the target image of Natalie Portman matched a face within the dataset that contained 73 photos of well-known female actresses.
