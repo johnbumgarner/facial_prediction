@@ -54,7 +54,7 @@ haar_frontal_face_model = os.path.join(cv2_base_dir, 'data/haarcascade_frontalfa
 The Haar Cascade classifier <i>haarcascade_frontalface_default.xml</i> is used in the following matter to located a human face within an image.  
 
 ```python
-# This code was extraction from the script cv2_facial_prediction.py
+# This code was extracted from the script cv2_facial_prediction.py
 
 image_name = 'natalie_portman.jpeg'
 photograph = cv2.imread(image_name)
@@ -96,7 +96,7 @@ The initial dataset created in the Data Gathering phase contained facial boundar
 The facial boundary box coordinates for each image will be processed using the <i>OpenCV LBPHFaceRecognizer</i>. The output will be written to a YML file.  This file is primarily associated with Javascript by YAML.  YAML stand for "YAML Ain't Markup Language." YAML uses a text file and organizes it into a format which is Human-readable. 
 
 ```python
-# This code was extraction from the script cv2_facial_prediction.py
+# This code was extracted from the script cv2_facial_prediction.py
 
 recognizer = cv2.face.LBPHFaceRecognizer_create(radius=1, neighbors=4, grid_x=4, grid_y=4)
 
@@ -114,7 +114,7 @@ recognizer.write('face_train_data.yml')
 In this phase the data elements within the pickle and YAML files created in the training phase will be used in conjunction with the Haar Cascade classifier <i>haarcascade_frontalface_default.xml</i>.  The classifier is used to obtain the boundary box coordinates from the photograph of the unknown person that we are looking for within the image dataset. The <i>OpenCV</i> function <i>face_FaceRecognizer.predict()</i> is used to compute a <i>confidence score,</i> which indicates the match potential between the target image and one within the dataset. A perfect match will have a <i>confidence score</i> of zero. <i>Confidence scores</i> can assigned to various thresholds levels, which will allow for the possibility of close matches and no related matches within the dataset.   
 
 ```python
-# This code was extraction from the script cv2_facial_prediction.py
+# This code was extracted from the script cv2_facial_prediction.py
 
 recognizer.read(training_data)
 
